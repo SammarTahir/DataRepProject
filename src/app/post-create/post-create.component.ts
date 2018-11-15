@@ -11,9 +11,11 @@ export class PostCreateComponent implements OnInit {
 
   constructor(private service:PostService) { }
 
+  //get digagnostic(){ return JSON.stringify(form)}
+
   onAddPost(form: NgForm) {
 
-    this.service.addPost(form.value.title, form.value.content).subscribe();
+    this.service.addPost(form.value.title, form.value.content, form.value.number).subscribe();
     
     console.log(form.value);
     form.resetForm();

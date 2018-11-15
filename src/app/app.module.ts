@@ -1,20 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { PostDetailsComponent } from './post-details/post-details.component';
-import {PostService} from './services/post.service';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from "@angular/forms";
-import { MatInputModule,
+import {
+  MatInputModule,
   MatMenuModule,
   MatCardModule,
   MatButtonModule,
   MatIconModule,
   MatToolbarModule,
-  MatExpansionModule} from '@angular/material';
+  MatExpansionModule
+} from '@angular/material';
+import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostCreateComponent } from './post-create/post-create.component';
+import { PostViewComponent } from './post-view/post-view.component';
+import { PostService } from './services/post.service';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +27,10 @@ const appRoutes: Routes = [
   {
     path: 'create',
     component: PostCreateComponent
+  },
+  {
+    path: 'view',
+    component: PostDetailsComponent
   }
 ];
 
@@ -32,7 +39,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     PostDetailsComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostViewComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -43,11 +51,11 @@ const appRoutes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     MatInputModule,
-  MatCardModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatMenuModule
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

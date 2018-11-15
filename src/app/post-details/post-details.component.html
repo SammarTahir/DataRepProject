@@ -1,3 +1,17 @@
-<p>
-  post-details works!
-</p>
+<mat-toolbar color="primary">Posts List</mat-toolbar>
+<mat-accordion multi="true" *ngIf="posts.length > 0">
+  <mat-expansion-panel [expanded]="true" *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      {{ post.title }}
+      {{ post.name }}
+    </mat-expansion-panel-header>
+    <p>{{ post.content }}</p>
+    
+
+    <mat-action-row>
+      <button mat-button color="primary">EDIT</button>
+      <button mat-button (click)="onDelete(post._id)" color="warn">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p>
