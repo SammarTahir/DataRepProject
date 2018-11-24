@@ -9,8 +9,11 @@ mongoose.connect(mongoDB);
 
 var Schema = mongoose.Schema;
 var postSchema = new Schema({
-    title: String,
-    content: String
+    firstname: String,
+    surname: String,
+    number: String,
+    job: String,
+    website: String
 })
 
 var PostModel = mongoose.model('post', postSchema);
@@ -26,11 +29,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.post('/name', function (req, res) {
-    res.send("Hello you sent " +
-        req.body.firstname + " " +
-        req.body.lastname);
-})
 
 app.get('/', function (req, res) {
     res.send('Hello from Express');
@@ -38,16 +36,26 @@ app.get('/', function (req, res) {
 
 app.post('/api/posts', function (req, res) {
     console.log("post successful");
-    console.log(req.body.title);
-    console.log(req.body.content);
+    console.log(req.body.firstname);
+    console.log(req.body.surname);
+    console.log(req.body.number);
+    console.log(req.body.job);
+    console.log(req.body.website);
 
     PostModel.create({
-        title: req.body.title,
-        content: req.body.content
+        firstname: req.body.firstname,
+        surname: req.body.surname,
+        number: req.body.number,
+        job: req.body.job,
+        website: req.body.website  
+    },
+    function (err, data) {
+        if (err)
+            res.send(err);
+        res.json(data);
     })
-
+    
     // adding this text will close server (stopping double posts)
-    res.send('Item added');
 })
 
 app.get('/api/posts', function (req, res) {
@@ -68,6 +76,23 @@ app.delete('/api/posts/:id', function (req, res) {
             res.send(data);
         })
 })
+
+app.get('/api/posts/:id', function(req,res){
+    PostData.find({ _id: req.params.id},
+        function (err, data) {
+            if (err)
+                return handleError(err);
+            res.json(data);
+    });
+});
+
+app.put('/api/posts/:id', function(req,res){
+    PostData.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+        if (err) return next(err);
+         res.json(post);
+    });
+});
+    
 
 var server = app.listen(8081, function () {
     var host = server.address().address

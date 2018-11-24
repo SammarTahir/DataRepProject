@@ -1,3 +1,59 @@
-<p>
-  post-view works!
-</p>
+<mat-card>
+    <form (submit)="onEditPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      name="firstname"
+      ngModel={{post[0].firstname}}
+      required
+      minlength="3"
+      #firstname="ngModel">
+      <mat-error *ngIf="firstname.invalid">Please enter a firstname.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput
+      rows="4"
+      name="surname"
+      ngModel={{post[0].surname}}
+      required
+      #surname="ngModel"></textarea>
+      <mat-error *ngIf="surname.invalid">Please enter surname.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput
+      rows="4"
+      name="number"
+      ngModel={{post[0].number}}
+      required
+      #number="ngModel"></textarea>
+        <mat-error *ngIf="number.invalid">Please enter number.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput
+      rows="4"
+      name="job"
+      ngModel={{post[0].job}}
+      required
+      #job="ngModel"></textarea>
+      <mat-error *ngIf="job.invalid">Please enter job.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea
+        matInput
+        rows="4"
+        name="website"
+        ngModel={{post[0].website}}
+        required
+        #website="ngModel"></textarea>
+        <mat-error *ngIf="website.invalid">Please enter website.</mat-error>
+      </mat-form-field>
+    <button
+    mat-raised-button
+    color="accent"
+    type="submit">Update Post</button>
+  </form>
+</mat-card>

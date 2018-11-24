@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,9 +29,10 @@ const appRoutes: Routes = [
     component: PostCreateComponent
   },
   {
-    path: 'view',
-    component: PostDetailsComponent
+    path: 'edit',
+    component: PostViewComponent
   }
+
 ];
 
 

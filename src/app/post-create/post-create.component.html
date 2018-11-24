@@ -1,21 +1,33 @@
 <mat-card>
   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
     <mat-form-field>
-      Title
-      <input matInput type="text" name="title" ngModel required minlength="3" #title="ngModel">
-      <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
+      Firstname
+      <input matInput type="text" name="firstname" ngModel required minlength="3" #firstname="ngModel">
+      <mat-error *ngIf="firstname.invalid">Please enter Firstname.</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
-      Content
-      <textarea matInput name="content" ngModel required #content="ngModel"></textarea>
-      <mat-error *ngIf="content.invalid">Please enter a post title.</mat-error>
+      Surname
+      <textarea matInput name="surname" ngModel required #surname="ngModel"></textarea>
+      <mat-error *ngIf="surname.invalid">Please enter Surname.</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
       Number
-      <input matInput type="text" name="number" ngModel required minlength="3" #number="ngModel">
-      <mat-error *ngIf="number.invalid">Please enter a post name</mat-error>
+      <textarea matInput name="number" ngModel required #number="ngModel"></textarea>
+      <mat-error *ngIf="number.invalid">Please enter Number</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      Job
+      <textarea matInput name="job" ngModel required #job="ngModel"></textarea>
+      <mat-error *ngIf="job.invalid">Please enter Job</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      Website
+      <textarea matInput name="website" ngModel required #website="ngModel"></textarea>
+      <mat-error *ngIf="website.invalid">Please enter Website</mat-error>
     </mat-form-field>
     <br>
     <button mat-raised-button color="accent" type="submit">Save Post</button>
