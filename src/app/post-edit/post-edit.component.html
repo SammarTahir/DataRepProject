@@ -1,0 +1,34 @@
+<mat-card>
+  <form (submit)="onEditPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      First Name:
+      <input matInput type="text" name="firstname" ngModel={{post[0].firstname}} required minlength="3" #firstname="ngModel"/>
+      <mat-error *ngIf="firstname.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+    Surname:
+      <textarea matInput rows="4" name="surname" ngModel={{post[0].surname}} required #surname="ngModel"></textarea>
+      <mat-error *ngIf="surname.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+    Number:
+      <input matInput type="text" name="number" ngModel={{post[0].number}} required minlength="3" #number="ngModel">
+      <mat-error *ngIf="number.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+    Job:
+      <input matInput type="text" name="job" ngModel={{post[0].job}} required minlength="3" #job="ngModel">
+      <mat-error *ngIf="job.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+    Website:
+      <input matInput type="text" name="website" ngModel={{post[0].website}} required minlength="3" #website="ngModel">
+      <mat-error *ngIf="website.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Update Post</button>
+  </form>
+</mat-card>

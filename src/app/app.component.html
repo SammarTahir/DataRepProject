@@ -1,17 +1,17 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="black">
+  <img src="assets/img/party.jpg">
   <mat-toolbar-row>
     <span class="title-center">
-      Party Organizer App
+    <b>Party Organizer App</b>
     </span>
   </mat-toolbar-row>
 
   <mat-toolbar-row>
+
     <button mat-button [routerLink]="['/view']" color="Warn">View Contacts</button>
     <button mat-button [routerLink]="['/create']" color="Warn">Add Contact</button>
     <button mat-button [routerLink]="['/list']">Edit Contact</button>
   </mat-toolbar-row>
 </mat-toolbar>
-
-
 
 <router-outlet></router-outlet>

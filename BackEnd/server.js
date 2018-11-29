@@ -78,7 +78,7 @@ app.delete('/api/posts/:id', function (req, res) {
 })
 
 app.get('/api/posts/:id', function(req,res){
-    PostData.find({ _id: req.params.id},
+    PostModel.find({ _id: req.params.id},
         function (err, data) {
             if (err)
                 return handleError(err);
@@ -87,7 +87,7 @@ app.get('/api/posts/:id', function(req,res){
 });
 
 app.put('/api/posts/:id', function(req,res){
-    PostData.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    PostModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
         if (err) return next(err);
          res.json(post);
     });
