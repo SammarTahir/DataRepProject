@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from '../post.model';
-import { NgForm } from "@angular/forms";
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-post-view',
   templateUrl: './post-view.component.html',
@@ -11,17 +10,21 @@ import { NgForm } from "@angular/forms";
 })
 export class PostViewComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, private ps: PostService) { }
-  post: any = [];
+  posts: any = [];
+
+  constructor(private ps: PostService) { }
+
   ngOnInit() {
-    console.log(this.route.snapshot.params['id']);
-    this.ps.getPost(this.route.snapshot.params['id']).subscribe(data => {
-      this.post = data;
-    })
-  }
-  onEditPost(form: NgForm) {
-    this.ps.updatePost(this.post[0]._id, form.value.firstname, form.value.surname, form.value.number, form.value.job, form.value.website).subscribe();
-    this.router.navigate(['/list']);
+    //this.posts = this.ps.getPosts();
+    this.ps.getPostsData().subscribe(data => {
+      this.posts = data;
+    });
   }
 
+  onDelete(id: String) {
+    console.log("Delete called " + id);
+    this.ps.deletePost(id).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 }

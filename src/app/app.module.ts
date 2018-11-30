@@ -19,6 +19,7 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { PostService } from './services/post.service';
 import { PostEditComponent } from './post-edit/post-edit.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {
@@ -36,6 +37,10 @@ const appRoutes: Routes = [
   {
     path: 'view',
     component: PostViewComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
   }
 ];
 
@@ -46,7 +51,8 @@ const appRoutes: Routes = [
     PostDetailsComponent,
     PostCreateComponent,
     PostViewComponent,
-    PostEditComponent
+    PostEditComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

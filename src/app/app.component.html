@@ -1,17 +1,16 @@
-<mat-toolbar color="black">
-  <img src="assets/img/party.jpg">
+<mat-toolbar img src="assets/img/banner.jpg" style="width:100%">
+  
   <mat-toolbar-row>
+      <div id="container">
     <span class="title-center">
-    <b>Party Organizer App</b>
+        <button mat-button [routerLink]="['']" color="Warn"><h2>Party Organizer App</h2></button>
     </span>
+  </div>
   </mat-toolbar-row>
-
-  <mat-toolbar-row>
-
-    <button mat-button [routerLink]="['/view']" color="Warn">View Contacts</button>
-    <button mat-button [routerLink]="['/create']" color="Warn">Add Contact</button>
-    <button mat-button [routerLink]="['/list']">Edit Contact</button>
+  <mat-toolbar-row id = "color">
+      <button mat-button [routerLink]="['/view']" color="Warn">View Contacts</button>
+      <button mat-button [routerLink]="['/create']" color="Warn">Add Contact</button>
+      <button mat-button [routerLink]="['/list']">Edit Contact</button>
   </mat-toolbar-row>
 </mat-toolbar>
-
 <router-outlet></router-outlet>

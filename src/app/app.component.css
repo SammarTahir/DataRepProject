@@ -1,0 +1,11 @@
+#container {
+    background-image: url("/assets/img/party.jpg");
+    background-position:center;
+    color: #000000;
+    text-emphasis-color: #4286f4;
+}
+#color{
+
+    background-color: cadetblue;
+    
+}

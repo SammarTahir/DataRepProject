@@ -1,0 +1,11 @@
+.position{
+    background-image: url("/assets/img/giphy.gif");
+    background-size: cover;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    text-align: right;
+    
+}
+.background{
+    text-align: center;
+}

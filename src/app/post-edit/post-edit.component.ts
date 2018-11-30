@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { NgForm } from "@angular/forms";
+import { Observable } from 'rxjs';
+import { Post } from '../post.model';
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
