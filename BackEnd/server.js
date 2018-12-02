@@ -30,9 +30,12 @@ app.use(function (req, res, next) {
 });
 
 
+app.use("/", express.static(path.join(__dirname, "angular")));
+
 app.get('/', function (req, res) {
-    res.send('Hello from Express');
+    res.sendFile(path.join(__dirname, "angular", "index.html"));
 })
+
 
 app.post('/api/posts', function (req, res) {
     console.log("post successful");
@@ -47,14 +50,14 @@ app.post('/api/posts', function (req, res) {
         surname: req.body.surname,
         number: req.body.number,
         job: req.body.job,
-        website: req.body.website  
+        website: req.body.website
     },
-    function (err, data) {
-        if (err)
-            res.send(err);
-        res.json(data);
-    })
-    
+        function (err, data) {
+            if (err)
+                res.send(err);
+            res.json(data);
+        })
+
     // adding this text will close server (stopping double posts)
 })
 
@@ -77,22 +80,22 @@ app.delete('/api/posts/:id', function (req, res) {
         })
 })
 
-app.get('/api/posts/:id', function(req,res){
-    PostModel.find({ _id: req.params.id},
+app.get('/api/posts/:id', function (req, res) {
+    PostModel.find({ _id: req.params.id },
         function (err, data) {
             if (err)
                 return handleError(err);
             res.json(data);
+        });
+});
+
+app.put('/api/posts/:id', function (req, res) {
+    PostModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
     });
 });
 
-app.put('/api/posts/:id', function(req,res){
-    PostModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-        if (err) return next(err);
-         res.json(post);
-    });
-});
-    
 
 var server = app.listen(8081, function () {
     var host = server.address().address
