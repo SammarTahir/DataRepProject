@@ -20,6 +20,7 @@ import { PostViewComponent } from './post-view/post-view.component';
 import { PostService } from './services/post.service';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
 
 const appRoutes: Routes = [
   {
@@ -41,7 +42,12 @@ const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: '**',
+    component: ErrorComponent
   }
+
 ];
 
 
@@ -52,7 +58,8 @@ const appRoutes: Routes = [
     PostCreateComponent,
     PostViewComponent,
     PostEditComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
